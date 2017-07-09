@@ -1,10 +1,10 @@
 <?php
 // Routes
 
-$app->get('/[{name}]', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
+$app->post('/package/create',function ($request, $response, $args) {
+	require 'pakot\functions\package\CreatePackage.php';
 
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+	$package = createPackage($request);
+
+	return $package->toJson();
 });
