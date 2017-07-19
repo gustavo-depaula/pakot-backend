@@ -1,10 +1,9 @@
 <?php
 // delivery man class
 
-use CommonUser
+require 'CommonUser.php';
 
 class DeliveryMan extends CommonUser {
 	private $vehicle;
 	private $packages;
-	private $revenues;
 }

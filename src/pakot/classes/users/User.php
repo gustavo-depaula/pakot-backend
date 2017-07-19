@@ -1,9 +1,17 @@
 <?php
 // user class
 
-use CommonUser
+require 'CommonUser.php';
 
 class User extends CommonUser {
-	private $packages;
-	private $payment;
+	private $packages = "null";
+	private $payment = "null";
+
+	function __construct($name,$email,$phone) {
+		$this->name = $name;
+		$this->email = $email;	
+		$this->phone = $phone;
+		$this->payment = "null";
+    }
+
 }

@@ -3,10 +3,6 @@
 
 	function getPackageById($id){
 		$conn = new mysqli("localhost", "admin","123456", "PakotDatabase");
-		// Check connection
-		if ($conn->connect_error) {
-		    die("Connection failed: " . $conn->connect_error);
-		} 
 
 		$sql = "SELECT * FROM packages";
 		$result = $conn->query($sql);

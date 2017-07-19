@@ -2,7 +2,8 @@
 // abstract user class
 
 abstract class CommonUser {
-	private $name;
-	private $rating;
-	private $phone;
+	private $name = "null";
+	private $email = "null";	
+	private $rating = 0;
+	private $phone = "null";
 }
