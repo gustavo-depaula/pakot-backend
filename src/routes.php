@@ -1,5 +1,6 @@
 <?php
 // Routes
+require 'const.php';
 
 $app->post('/package/create',function ($request, $response, $args) {
 	require 'pakot\functions\package\CreatePackage.php';
@@ -8,14 +9,14 @@ $app->post('/package/create',function ($request, $response, $args) {
 	return $package->toJson();
 });
 
-$app->post('/package/getopen',function ($request, $response, $args) {
-	require 'pakot\functions\package\GetOpenPackages.php';
+$app->get('/package/getopen',function ($request, $response, $args) {
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/GetOpenPackages.php';
 
 	$packages = getOpenPackages();
 	return json_encode($packages);
 });
 
-$app->post('/package/getpackage/{id}',function ($request, $response, $args) {
+$app->get('/package/getpackage/{id}',function ($request, $response, $args) {
 	require 'pakot\functions\package\GetPackage.php';
 
 	$package = getPackageById($args['id']);
@@ -27,8 +28,14 @@ $app->post('/login/User',function ($request, $response, $args){
 
 	$user = checkUser($request);
 
+	// if user exists -> return user info
+	// else -> return flag to require sign up
+	
 	return json_encode($user);
+});
 
+$app->get('/',function ($request, $response, $args){
+	return 'I am working!';
 });
 
 $app->post('/login/DeliveryMan',function ($request, $response, $args){
