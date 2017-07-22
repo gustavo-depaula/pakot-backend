@@ -3,7 +3,7 @@
 require 'const.php';
 
 $app->post('/package/create',function ($request, $response, $args) {
-	require 'pakot\functions\package\CreatePackage.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/CreatePackage.php';
 
 	$package = createPackage($request);
 	return $package->toJson();
@@ -17,14 +17,14 @@ $app->get('/package/getopen',function ($request, $response, $args) {
 });
 
 $app->get('/package/getpackage/{id}',function ($request, $response, $args) {
-	require 'pakot\functions\package\GetPackage.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/GetPackage.php';
 
 	$package = getPackageById($args['id']);
 	return json_encode($package);
 });
 
 $app->post('/login/User',function ($request, $response, $args){
-	require 'pakot\functions\login\UserLog.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/login/UserLog.php';
 
 	$user = checkUser($request);
 
