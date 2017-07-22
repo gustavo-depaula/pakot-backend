@@ -1,17 +1,11 @@
 <?php
-	require 'C:\xampp\htdocs\src\pakot\classes\users\User.php';
-
-	function createUser($request){
-		$newUser = new User($request->getParam('name'),$request->getParam('email'),$request->getParam('phone'));
-		$newUser->new = true;
-		return $newUser;
-	}
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/classes/users/User.php';
 
 	function checkUser($request){
 		$name = $request->getParam('name');
 		$email = $request->getParam('email');
 
-		$conn = new mysqli("localhost", "admin","123456", "PakotDatabase");
+		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
 		$sql = "SELECT * FROM commonuser";
 		$result = $conn->query($sql);
@@ -24,9 +18,8 @@
 				return $row;
 			}
 	    }
-
 		$conn->close();
-		return createUser($request);
+		return 'requireSignUp';
 	}
 
 ?>

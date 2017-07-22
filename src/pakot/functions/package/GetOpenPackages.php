@@ -1,8 +1,8 @@
 <?php
-	require 'C:\xampp\htdocs\src\pakot\classes\Package.php';
+	require $_SERVER['DOCUMENT_ROOT']. '/src/pakot/classes/Package.php';
 
 	function getOpenPackages(){
-		$conn = new mysqli("localhost", "admin","123456", "PakotDatabase");
+		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
 		$sql = "SELECT * FROM packages";
 		$result = $conn->query($sql);
