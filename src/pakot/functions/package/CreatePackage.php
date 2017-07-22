@@ -1,5 +1,5 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/classes/users/Package.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/classes/Package.php';
 
 	function createPackage($request){
 		$nickname = $request->getParam('nickname');
