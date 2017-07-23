@@ -20,7 +20,6 @@ $app->add(function ($req, $res, $next) {
 $app->post('/package/create',function ($request, $response, $args) {
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/CreatePackage.php';
 
-	$request = json_decode($request);
 	$package = createPackage($request);
 	return $package->toJson();
 });
