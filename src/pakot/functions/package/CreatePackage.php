@@ -7,8 +7,10 @@
 		$priority = $request->getParam('priority');
 		$size = $request->getParam('size');
 		$weight = $request->getParam('weight');
+		$origin = $request->getParam('origin');
+		$destination = $request->getParam('destination');
 
-	    $package = new Package($nickname,$description,$priority,$size,$weight);
+	    $package = new Package($nickname,$description,$priority,$size,$weight,$origin,$destination);
 
 		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 		$sql = "INSERT INTO packages (nickname,description,priority,size,weight)
