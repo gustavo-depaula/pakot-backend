@@ -1,6 +1,9 @@
 <?php
 // Routes
+
+header('Access-Control-Allow-Origin: *');  
 require 'const.php';
+
 
 $app->post('/package/create',function ($request, $response, $args) {
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/CreatePackage.php';
