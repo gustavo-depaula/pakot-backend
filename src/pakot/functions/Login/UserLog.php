@@ -2,8 +2,8 @@
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/classes/users/User.php';
 
 	function checkUser($request){
-		$name = $request->getParam('name');
-		$email = $request->getParam('email');
+		$name = $request['name'];
+		$email = $request['email'];
 
 		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
@@ -11,11 +11,12 @@
 		$result = $conn->query($sql);
 
 	    while($row = $result->fetch_assoc()) {
-			if($row['Email'] == $email){
+			if($row['email'] == $email){
 				$row = (object) $row;
-				$row->new = false;
 				$conn->close();
-				return $row;
+				session_start();
+				$_SESSION['currentUser'] = $row;
+				return 'dataFound';
 			}
 	    }
 		$conn->close();
