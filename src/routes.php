@@ -42,16 +42,23 @@ $app->get('/package/getpackage/{id}',function ($request, $response, $args) {
 
 $app->post('/login/User',function ($request, $response, $args){
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/Login/UserLog.php';
+	$request = $request->getParsedBody();
 
 	$user = checkUser($request);
 
-	// if user exists -> return user info
-	// else -> return flag to require sign up
+	// if user exists -> return 'dataFound'
+	// else -> return 'requireSignUp'
 	
 	return json_encode($user);
 });
 
+$app->post('/logoff/User',function ($request, $response, $args){
+	unset($_SESSION["currentUser"]);
+	return 'LoggedOut';
+});
+
 $app->get('/',function ($request, $response, $args){
+	var_dump($_SESSION['currentUser']);
 	return 'I am working!';
 });
 
