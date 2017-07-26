@@ -52,6 +52,15 @@ $app->post('/login/User',function ($request, $response, $args){
 	return json_encode($user);
 });
 
+$app->post('/login/SignUp',function ($request, $response, $args){
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/Login/SignUp.php';
+	$request = $request->getParsedBody();
+
+	signUp($request);
+
+	return 'SignUpSuccess';
+});
+
 $app->post('/logoff/User',function ($request, $response, $args){
 	unset($_SESSION["currentUser"]);
 	return 'LoggedOut';
