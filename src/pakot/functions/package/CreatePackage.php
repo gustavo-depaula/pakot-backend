@@ -1,6 +1,4 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/classes/Package.php';
-
 	function createPackage($request){
 		$nickname = $request['nickname'];
 		$description = $request['description'];

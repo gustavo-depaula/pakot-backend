@@ -1,6 +1,4 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT']. '/src/pakot/classes/Package.php';
-
 	function getOpenPackages(){
 		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 

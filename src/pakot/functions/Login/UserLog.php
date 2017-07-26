@@ -1,10 +1,5 @@
 <?php
-	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/classes/users/User.php';
-
-	function checkUser($request){
-		$name = $request['name'];
-		$email = $request['email'];
-
+	function checkUser($email){
 		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
 		$sql = "SELECT * FROM commonuser";
@@ -14,9 +9,7 @@
 			if($row['email'] == $email){
 				$row = (object) $row;
 				$conn->close();
-				session_start();
-				$_SESSION['currentUser'] = $row;
-				return 'dataFound';
+				return 'LoginSuccess';
 			}
 	    }
 		$conn->close();
