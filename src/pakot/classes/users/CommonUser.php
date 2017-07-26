@@ -4,6 +4,6 @@
 abstract class CommonUser {
 	private $name = "null";
 	private $email = "null";	
-	private $rating = 0;
+	private $rating = "undefined";
 	private $phone = "null";
 }
