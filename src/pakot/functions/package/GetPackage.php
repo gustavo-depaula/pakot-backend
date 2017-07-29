@@ -16,7 +16,7 @@
 	    return 'packageNotFound';
 	}
 
-	function getPackagebyStatus($email, $status){
+	function getPackagebyStatus($email){
 		// get the logged user packages ids
 		$user = getUser($email);
 

@@ -32,6 +32,14 @@ $app->get('/package/getpackage/{id}',function ($request, $response, $args) {
 	return json_encode($package);
 });
 
+$app->post('/package/getallpackages',function ($request, $response, $args) {
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$packages = getPackagebyStatus($request['email']);
+	return json_encode($packages);
+});
+
+
 $app->post('/package/update/',function ($request, $response, $args) {
 	$request = $request->getParsedBody();
 	return json_encode(updatePackageStatus($request));
