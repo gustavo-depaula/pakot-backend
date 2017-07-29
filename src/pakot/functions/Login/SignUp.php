@@ -5,10 +5,18 @@
 		$cpf = $request['cpf'];
 		$phone = $request['phone'];
 		$payment = $request['payment'];
-
+		
 		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-		$sql = "INSERT INTO commonuser (name,email,cpf,rating,phone,payment,packages)
-		VALUES ('$name','$email','$cpf','undefined','$phone','$payment','undefined')";
+
+		$result = $conn->query("SELECT * FROM commonuser WHERE email = '$email'");
+		if($result->num_rows>0)
+			return 'emailAlreadySigned';
+
+		$result = $conn->query("SELECT * FROM commonuser WHERE cpf = '$cpf'");
+		if($result->num_rows>0)
+			return 'cpfAlreadySigned';
+
+		$sql = "INSERT INTO commonuser (name,email,cpf,rating,phone,payment,packages) VALUES ('$name','$email','$cpf','undefined','$phone','$payment','')";
 		if ($conn->query($sql) === TRUE)
 			return 'SignUpSuccess';
 		else 
