@@ -23,10 +23,13 @@ class Package {
 	private $assigned;
 	private $dispatched;
 	private $arrived;
-	private $experienceRating;
+    private $experienceRating;
+    private $dateCreate;
+    private $dateAssigned;
+    private $dateDispatched;
+    private $dateArrived;
 
-
-	function __construct($nickname, $description, $priority, $size ,$weight, $origin, $destination){
+	function __construct($nickname, $description, $priority, $size ,$weight, $origin, $destination,$dateCreate){
 		$this->nickname = $nickname;
 		$this->description = $description;
 		$this->priority = $priority;
@@ -34,6 +37,7 @@ class Package {
 		$this->weight = $weight;
         $this->origin = $origin;
         $this->destination = $destination;
+        $this->dateCreate = $dateCreate;
     }
     public function getNickname(){
     	return $this->nickname;
@@ -54,7 +58,31 @@ class Package {
         return $this->id;
     }
     public function setId($id){
-    	$this->id=$id;
+        $this->id=$id;
+    }
+    public function getdateCreate(){
+        return $this->dateCreate;
+    }
+    public function setdateCreate($dateCreate){
+        $this->dateCreate=$dateCreate;
+    }
+    public function getdateAssigned(){
+        return $this->dateAssigned;
+    }
+    public function setdateAssigned($dateAssigned){
+        $this->dateAssigned=$dateAssigned;
+    }
+    public function getdateDispatched(){
+        return $this->dateDispatched;
+    }
+    public function setdateDispatched($dateDispatched){
+        $this->dateDispatched=$dateDispatched;
+    }
+    public function getdateArrived(){
+        return $this->dateArrived;
+    }
+    public function setdateArrived($dateArrived){
+        $this->dateArrived=$dateArrived;
     }
 
     public function toJson(){
