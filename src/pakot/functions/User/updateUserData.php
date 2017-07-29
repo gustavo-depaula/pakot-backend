@@ -6,7 +6,6 @@
 		$payment = $request['payment'];
 
 		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-		echo $email;
 		$sql = "UPDATE commonuser SET name='$name', cpf='$cpf', phone='$phone', payment='$payment' WHERE email='$email'";
 		$conn->query($sql);
 		$conn->close();
