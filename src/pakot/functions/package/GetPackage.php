@@ -26,7 +26,7 @@
 		$packages = [];
 		for($i=1;$i<count($packagesIds);$i++){
 			array_push($packages, getPackageById($packagesIds[$i]));
-			$packages[$i]->flag=false;
+			$packages[$i-1]['flag']=false;
 		}
 		return $packages;
 	}
