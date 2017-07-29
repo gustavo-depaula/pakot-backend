@@ -18,6 +18,7 @@ $app->add(function ($req, $res, $next) {
 $app->post('/package/create',function ($request, $response, $args) {
 	$request = $request->getParsedBody();
 	$package = createPackage($request);
+	// package properties are private
 	return $package->toJson();
 });
 
@@ -29,6 +30,11 @@ $app->get('/package/getopen',function ($request, $response, $args) {
 $app->get('/package/getpackage/{id}',function ($request, $response, $args) {
 	$package = getPackageById($args['id']);
 	return json_encode($package);
+});
+
+$app->post('/package/update/',function ($request, $response, $args) {
+	$request = $request->getParsedBody();
+	return json_encode(updatePackageStatus($request));
 });
 
 $app->post('/login/User',function ($request, $response, $args){

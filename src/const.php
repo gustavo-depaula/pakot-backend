@@ -5,10 +5,12 @@
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/CreatePackage.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/GetOpenPackages.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/GetPackage.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/package/updatePackageStatus.php';
 
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/Login/UserLog.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/Login/SignUp.php';
 
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/getUser.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/getUserData.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/updateUserData.php';
 
