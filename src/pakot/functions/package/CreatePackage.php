@@ -15,6 +15,13 @@
 		VALUES ('$nickname','$description','$priority','$size','$weight','$origin','$destination')";
 		$conn->query($sql);
 		$package->setId($conn->insert_id);
+
+		// insert in logged user the package id created
+		$user = getUser($email);		
+		$packageIds = $user->packages . ';' . $package->getId();
+
+		$sql = "UPDATE commonuser SET packages='$packageIds' WHERE email='$email'";
+		$conn->query($sql);
 		$conn->close();
 
 	    return $package;		
