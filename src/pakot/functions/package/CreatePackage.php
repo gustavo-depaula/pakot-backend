@@ -1,5 +1,5 @@
 <?php
-	function createPackage($request){
+	function createPackage($request,$email){
 		$nickname = $request['nickname'];
 		$description = $request['description'];
 		$priority = $request['priority'];
@@ -18,7 +18,10 @@
 
 		// insert in logged user the package id created
 		$user = getUser($email);		
-		$packageIds = $user->packages . ';' . $package->getId();
+		if(count($user->packages)==0)
+			$packageIds = $package->getId();
+		else
+			$packageIds = $user->packages . ';' . $package->getId();
 
 		$sql = "UPDATE commonuser SET packages='$packageIds' WHERE email='$email'";
 		$conn->query($sql);

@@ -22,11 +22,11 @@
 
 		// get all the packages by ids
 		$packagesIds = explode(";", $user->packages);
+
 		$packages = [];
-		for($i=0;$i<count($packagesIds);$i++){
+		for($i=1;$i<count($packagesIds);$i++){
 			array_push($packages, getPackageById($packagesIds[$i]));
 		}
-
 		return $packages;
 	}
 ?>

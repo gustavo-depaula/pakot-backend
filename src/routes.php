@@ -17,7 +17,8 @@ $app->add(function ($req, $res, $next) {
 
 $app->post('/package/create',function ($request, $response, $args) {
 	$request = $request->getParsedBody();
-	$package = createPackage($request);
+	$email = $request['email'];
+	$package = createPackage($request,$email);
 	// package properties are private
 	return $package->toJson();
 });
