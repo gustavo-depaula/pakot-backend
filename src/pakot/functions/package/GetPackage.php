@@ -28,6 +28,6 @@
 			array_push($packages, getPackageById($packagesIds[$i]));
 			$packages[$i-1]['flag']=false;
 		}
-		return $packages;
+		return array_reverse($packages);
 	}
 ?>
