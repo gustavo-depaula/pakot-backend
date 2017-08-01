@@ -80,12 +80,66 @@ $app->get('/',function ($request, $response, $args){
 // TO DO
 // calculo de preço a partir de distancia
 
-// pegar pacotes passados de um cliente
-// pegar pacotes em aberto de um cliente
-// pegar pacotes em andamento de um cliente
-
-
 $app->post('/login/DeliveryMan',function ($request, $response, $args){
 	/*require '';
 	if()*/
+});
+
+
+/* 	DEVELOPING ROUTES 
+	DELETE IN PUBLISHED APP
+*/
+
+$app->get('/cleanUserDB',function ($request, $response, $args){
+	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+	$sql = "DROP TABLE commonuser";
+	$conn->query($sql);
+	$sql = "CREATE TABLE `commonuser` (
+		`name` text NOT NULL,
+		`email` varchar(255) NOT NULL,
+		`rating` text NOT NULL,
+		`phone` text NOT NULL,
+		`packages` text NOT NULL,
+		`payment` text NOT NULL,
+		`cpf` varchar(255) NOT NULL,
+		`id` bigint(20) NOT NULL AUTO_INCREMENT,
+		PRIMARY KEY (`id`),
+		UNIQUE KEY `email` (`email`),
+		UNIQUE KEY `cpf` (`cpf`)
+		);";
+	$conn->query($sql);
+	$conn->close();
+	return 'commonuser table is clean';
+});
+
+$app->get('/cleanPackagesDB',function ($request, $response, $args){
+	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+	$sql = "DROP TABLE packages";
+	$conn->query($sql);
+	$sql = "CREATE TABLE `packages` (
+		`id` bigint(20) NOT NULL AUTO_INCREMENT,
+		`nickname` text NOT NULL,
+		`description` text NOT NULL,
+		`priority` text NOT NULL,
+		`size` text NOT NULL,
+		`weight` text NOT NULL,
+		`sender` text NOT NULL,
+		`deliveryman` text NOT NULL,
+		`price` text NOT NULL,
+		`payment` text NOT NULL,
+		`assigned` text NOT NULL,
+		`dispatched` text NOT NULL,
+		`arrived` text NOT NULL,
+		`experienceRating` text NOT NULL,
+		`origin` text NOT NULL,
+		`destination` text NOT NULL,
+		`datecreate` text NOT NULL,
+		`dateassigned` text NOT NULL,
+		`datedispatched` text NOT NULL,
+		`datearrived` text NOT NULL,
+		PRIMARY KEY (`id`)
+		);";
+	$conn->query($sql);
+	$conn->close();
+	return 'packages table is clean';
 });
