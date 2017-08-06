@@ -46,6 +46,11 @@ $app->post('/package/update/',function ($request, $response, $args) {
 	return json_encode(updatePackageStatus($request));
 });
 
+$app->post('/package/price',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	return json_encode(calculatePrice($request));
+});
+
 $app->post('/login/User',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$email = $request['email'];
@@ -77,8 +82,6 @@ $app->get('/',function ($request, $response, $args){
 	return 'I am working!';
 });
 
-// TO DO
-// calculo de preço a partir de distancia
 
 $app->post('/login/DeliveryMan',function ($request, $response, $args){
 	/*require '';

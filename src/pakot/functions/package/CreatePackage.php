@@ -32,4 +32,43 @@
 
 	    return $package;		
 	}
+	function calculatePrice($request){
+		$price = 0;
+		$priority = $request['priority'];		
+		$distance = $request['distance'];
+		$size = $request['size'];
+		$weight = $request['weight'];
+
+		// priority
+		if($priority == 0)
+			$price += 16 + ($distance * 1.3);
+		else if($priority == 1)
+			$price += 12 + ($distance * 1.1);			
+		else if($priority == 2)
+			$price += 6 + ($distance * 0.8);			
+
+		// size
+		if($size == 4)
+			$price += 3.5;
+		else if($size == 5)
+			$price += 5;			
+		else if($size == 6)
+			$price += 10;
+
+		// weight
+		if($weight == 2)
+			$price += 3;
+		else if($weight == 3)
+			$price += 3.5;			
+		else if($weight == 4)
+			$price += 5;					
+		else if($weight == 5)
+			$price += 10;			
+		else if($weight == 6)
+			$price += 25;
+
+		$obj = new stdClass;
+		$obj->price = $price;
+		return $obj;
+	}
 ?>
