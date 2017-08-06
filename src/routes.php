@@ -40,7 +40,6 @@ $app->post('/package/getallpackages',function ($request, $response, $args) {
 	return json_encode($packages);
 });
 
-
 $app->post('/package/update/',function ($request, $response, $args) {
 	$request = $request->getParsedBody();
 	return json_encode(updatePackageStatus($request));
@@ -82,10 +81,17 @@ $app->get('/',function ($request, $response, $args){
 	return 'I am working!';
 });
 
-
 $app->post('/login/DeliveryMan',function ($request, $response, $args){
-	/*require '';
-	if()*/
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	// if deliveryMan exists -> return 'dataFound'
+	// else -> return 'requireSignUp'
+	return json_encode(checkDeliveryMan($email));
+});
+
+$app->post('/login/SignUpDeliveryMan',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	return signUpDeliveryMan($request);
 });
 
 
@@ -145,4 +151,25 @@ $app->get('/cleanPackagesDB',function ($request, $response, $args){
 	$conn->query($sql);
 	$conn->close();
 	return 'packages table is clean';
+});
+
+$app->get('/cleanDeliveryManDB',function ($request, $response, $args){
+	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+	$sql = "DROP TABLE deliveryman";
+	$conn->query($sql);
+	$sql = "CREATE TABLE `deliveryman` (
+		`name` text NOT NULL,
+		`email` varchar(255) NOT NULL,
+		`rating` text NOT NULL,
+		`phone` text NOT NULL,
+		`packages` text NOT NULL,
+		`cpf` varchar(255) NOT NULL,
+		`id` bigint(20) NOT NULL AUTO_INCREMENT,
+		PRIMARY KEY (`id`),
+		UNIQUE KEY `email` (`email`),
+		UNIQUE KEY `cpf` (`cpf`)
+		);";
+	$conn->query($sql);
+	$conn->close();
+	return 'deliveryman table is clean';
 });

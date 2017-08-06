@@ -9,6 +9,7 @@
 
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/Login/UserLog.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/Login/SignUp.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/Login/DeliveryManLog.php';
 
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/getUser.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/getUserData.php';
