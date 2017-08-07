@@ -13,4 +13,10 @@ function updatePackageStatus($request){
 	$conn->close();
 	return "Package-$id $status = $value";
 }
+function updatePrice($id, $price){
+	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+	$sql = "UPDATE packages SET price='$price' WHERE id='$id'";
+	$conn->query($sql);
+	$conn->close();
+}
 ?>

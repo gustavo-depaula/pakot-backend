@@ -34,8 +34,12 @@ $app->post('/package/update/',function ($request, $response, $args) {
 });
 
 $app->post('/package/price',function ($request, $response, $args){
+	// assign the price to package id and returns the price 
 	$request = $request->getParsedBody();
-	return json_encode(calculatePrice($request));
+	$price = calculatePrice($request);
+
+	updatePrice($request['id'],$price->price);
+	return json_encode($price);
 });
 
 $app->post('/login/User',function ($request, $response, $args){
