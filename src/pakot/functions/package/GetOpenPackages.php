@@ -7,7 +7,7 @@
 	
 		$openPackages = [];			 
 	    while($row = $result->fetch_assoc()) {
-			if(!$row['assigned'])		
+			if($row['assigned'] == "false")	
 				array_push($openPackages,$row);
 	    }
 		$conn->close();	
