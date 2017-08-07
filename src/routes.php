@@ -93,6 +93,21 @@ $app->post('/DeliveryMan/getData',function ($request, $response, $args){
 	return json_encode($data);
 });
 
+$app->post('/DeliveryMan/assignPackage',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$packageId = $request['id'];
+
+	$param = array();
+	$param['id'] = $packageId;
+	$param['status'] = 'assigned';
+	$param['value'] = 'true';
+
+	updatePackageStatus($param);
+	return json_encode(assignPackage($email,$packageId));
+});
+
+
 /* 	DEVELOPING ROUTES 
 	DELETE IN PUBLISHED APP
 */
