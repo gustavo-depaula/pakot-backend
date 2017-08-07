@@ -3,18 +3,6 @@
 
 require 'const.php';
 
-$app->options('/{routes:.+}', function ($request, $response, $args) {
-    return $response;
-});
-
-$app->add(function ($req, $res, $next) {
-    $response = $next($req, $res);
-    return $response
-            ->withHeader('Access-Control-Allow-Origin', '*')
-            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
-            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-});
-
 $app->post('/package/create',function ($request, $response, $args) {
 	$request = $request->getParsedBody();
 	$email = $request['email'];
@@ -38,16 +26,6 @@ $app->post('/package/getallpackages',function ($request, $response, $args) {
 	$email = $request['email'];
 	$packages = getPackagebyStatus($request['email']);
 	return json_encode($packages);
-});
-
-// EM PROGRESSO
-$app->get('/package/getallOpenPackages',function ($request, $response, $args) {
-/*	$request = $request->getParsedBody();
-	$email = $request['email'];
-	$packages = getPackagebyStatus($request['email']);
-	return json_encode($packages);
-*/
-	return "work in progress";
 });
 
 $app->post('/package/update/',function ($request, $response, $args) {
