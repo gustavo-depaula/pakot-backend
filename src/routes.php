@@ -40,6 +40,16 @@ $app->post('/package/getallpackages',function ($request, $response, $args) {
 	return json_encode($packages);
 });
 
+// EM PROGRESSO
+$app->get('/package/getallOpenPackages',function ($request, $response, $args) {
+/*	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$packages = getPackagebyStatus($request['email']);
+	return json_encode($packages);
+*/
+	return "work in progress";
+});
+
 $app->post('/package/update/',function ($request, $response, $args) {
 	$request = $request->getParsedBody();
 	return json_encode(updatePackageStatus($request));
@@ -94,6 +104,12 @@ $app->post('/login/SignUpDeliveryMan',function ($request, $response, $args){
 	return signUpDeliveryMan($request);
 });
 
+$app->post('/DeliveryMan/getData',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$data = getDeliveryManData($email);
+	return json_encode($data);
+});
 
 /* 	DEVELOPING ROUTES 
 	DELETE IN PUBLISHED APP
