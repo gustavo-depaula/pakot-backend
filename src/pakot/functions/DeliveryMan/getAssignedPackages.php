@@ -8,8 +8,11 @@
 
 		$packages = [];
 		for($i=1;$i<count($packagesIds);$i++){
-			array_push($packages, getPackageById($packagesIds[$i]));
-			$packages[$i-1]['flag']=false;
+			$p = getPackageById($packagesIds[$i]);
+			if(!$p->arrived){
+				array_push($packages, getPackageById($packagesIds[$i]));
+				$packages[$i-1]['flag']=false;
+			}
 		}
 		return array_reverse($packages);
 	}
