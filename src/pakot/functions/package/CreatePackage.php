@@ -7,15 +7,16 @@
 		$weight = $request['weight'];
 		$origin = $request['origin'];
 		$destination = $request['destination'];
-		 	
+		$price = calculatePrice($request)->price; 	
+
 		date_default_timezone_set('America/Sao_Paulo');
 		$date = date('d/m/Y', time());
 
-	    $package = new Package($nickname,$description,$priority,$size,$weight,$origin,$destination,$date);
+	    $package = new Package($nickname,$description,$priority,$size,$weight,$origin,$destination,$date,$price);
 
 		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-		$sql = "INSERT INTO packages (nickname,description,priority,size,weight,origin,destination,assigned,dispatched,arrived,dateCreate)
-		VALUES ('$nickname','$description','$priority','$size','$weight','$origin','$destination','false','false','false','$date')";
+		$sql = "INSERT INTO packages (nickname,description,priority,size,weight,origin,destination,assigned,dispatched,arrived,dateCreate,price)
+		VALUES ('$nickname','$description','$priority','$size','$weight','$origin','$destination','false','false','false','$date',$price)";
 		$conn->query($sql);
 		$package->setId($conn->insert_id);
 

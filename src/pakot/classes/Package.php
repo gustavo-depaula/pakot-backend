@@ -29,7 +29,7 @@ class Package {
     private $dateDispatched;
     private $dateArrived;
 
-	function __construct($nickname, $description, $priority, $size ,$weight, $origin, $destination,$dateCreate){
+	function __construct($nickname, $description, $priority, $size ,$weight, $origin, $destination,$dateCreate,$price){
 		$this->nickname = $nickname;
 		$this->description = $description;
 		$this->priority = $priority;
@@ -38,6 +38,7 @@ class Package {
         $this->origin = $origin;
         $this->destination = $destination;
         $this->dateCreate = $dateCreate;
+        $this->price =$price;
     }
     public function getNickname(){
     	return $this->nickname;
