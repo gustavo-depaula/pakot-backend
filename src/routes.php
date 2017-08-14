@@ -93,6 +93,13 @@ $app->post('/DeliveryMan/getData',function ($request, $response, $args){
 	return json_encode($data);
 });
 
+$app->post('/DeliveryMan/getAssigned',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$data = getAssignedPackages($email);
+	return json_encode($data);
+});
+
 $app->post('/DeliveryMan/assignPackage',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$email = $request['email'];
@@ -107,12 +114,11 @@ $app->post('/DeliveryMan/assignPackage',function ($request, $response, $args){
 	return json_encode(assignPackage($email,$packageId));
 });
 
-
 /* 	DEVELOPING ROUTES 
 	DELETE IN PUBLISHED APP
 */
 
-$app->get('/cleanUserDB',function ($request, $response, $args){
+$app->get('/cleanAll',function ($request, $response, $args){
 	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 	$sql = "DROP TABLE commonuser";
 	$conn->query($sql);
@@ -130,12 +136,7 @@ $app->get('/cleanUserDB',function ($request, $response, $args){
 		UNIQUE KEY `cpf` (`cpf`)
 		);";
 	$conn->query($sql);
-	$conn->close();
-	return 'commonuser table is clean';
-});
 
-$app->get('/cleanPackagesDB',function ($request, $response, $args){
-	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 	$sql = "DROP TABLE packages";
 	$conn->query($sql);
 	$sql = "CREATE TABLE `packages` (
@@ -162,12 +163,6 @@ $app->get('/cleanPackagesDB',function ($request, $response, $args){
 		PRIMARY KEY (`id`)
 		);";
 	$conn->query($sql);
-	$conn->close();
-	return 'packages table is clean';
-});
-
-$app->get('/cleanDeliveryManDB',function ($request, $response, $args){
-	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 	$sql = "DROP TABLE deliveryman";
 	$conn->query($sql);
 	$sql = "CREATE TABLE `deliveryman` (
@@ -184,5 +179,5 @@ $app->get('/cleanDeliveryManDB',function ($request, $response, $args){
 		);";
 	$conn->query($sql);
 	$conn->close();
-	return 'deliveryman table is clean';
+	return "All tables cleaned";
 });
