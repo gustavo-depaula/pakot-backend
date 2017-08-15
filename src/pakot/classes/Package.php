@@ -22,7 +22,9 @@ class Package {
 
 	private $assigned;
 	private $dispatched;
-	private $arrived;
+    private $arrived;
+    private $canceled;
+
     private $experienceRating;
     private $dateCreate;
     private $dateAssigned;

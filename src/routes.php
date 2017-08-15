@@ -28,7 +28,7 @@ $app->post('/package/getallpackages',function ($request, $response, $args) {
 	return json_encode($packages);
 });
 
-$app->post('/package/update/',function ($request, $response, $args) {
+$app->post('/package/update',function ($request, $response, $args) {
 	$request = $request->getParsedBody();
 	return json_encode(updatePackageStatus($request));
 });
@@ -153,6 +153,7 @@ $app->get('/cleanAll',function ($request, $response, $args){
 		`assigned` text NOT NULL,
 		`dispatched` text NOT NULL,
 		`arrived` text NOT NULL,
+		`canceled` text NOT NULL,
 		`experienceRating` text NOT NULL,
 		`origin` text NOT NULL,
 		`destination` text NOT NULL,
@@ -160,6 +161,7 @@ $app->get('/cleanAll',function ($request, $response, $args){
 		`dateassigned` text NOT NULL,
 		`datedispatched` text NOT NULL,
 		`datearrived` text NOT NULL,
+		`datecanceled` text NOT NULL,
 		PRIMARY KEY (`id`)
 		);";
 	$conn->query($sql);
