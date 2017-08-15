@@ -100,6 +100,13 @@ $app->post('/DeliveryMan/getAssigned',function ($request, $response, $args){
 	return json_encode($data);
 });
 
+$app->post('/DeliveryMan/getDone',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$data = getDonePackages($email);
+	return json_encode($data);
+});
+
 $app->post('/DeliveryMan/assignPackage',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$email = $request['email'];
