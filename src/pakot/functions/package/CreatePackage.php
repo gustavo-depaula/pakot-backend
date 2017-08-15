@@ -15,8 +15,8 @@
 	    $package = new Package($nickname,$description,$priority,$size,$weight,$origin,$destination,$date,$price);
 
 		$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-		$sql = "INSERT INTO packages (nickname,description,priority,size,weight,origin,destination,assigned,dispatched,arrived,dateCreate,price)
-		VALUES ('$nickname','$description','$priority','$size','$weight','$origin','$destination','false','false','false','$date',$price)";
+		$sql = "INSERT INTO packages (nickname,description,priority,size,weight,origin,destination,assigned,dispatched,arrived,canceled,dateCreate,price)
+		VALUES ('$nickname','$description','$priority','$size','$weight','$origin','$destination','false','false','false','false,'$date',$price)";
 		$conn->query($sql);
 		$package->setId($conn->insert_id);
 
