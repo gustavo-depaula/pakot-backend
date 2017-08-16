@@ -23,8 +23,6 @@
 		// get all the packages by ids
 		$packagesIds = explode(";", $user->packages);
 
-		echo 'asd';
-		var_dump($packagesIds);
 		$packages = [];
 		for($i=1;$i<count($packagesIds);$i++){
 			array_push($packages, getPackageById($packagesIds[$i]));
