@@ -49,23 +49,23 @@
 			$price += 6 + ($distance * 0.8);			
 
 		// size
-		if($size == 4)
+		if($size == "L")
 			$price += 3.5;
-		else if($size == 5)
+		else if($size == "LL")
 			$price += 5;			
-		else if($size == 6)
+		else if($size == "XL")
 			$price += 10;
 
 		// weight
-		if($weight == 2)
+		if($weight == "L")
 			$price += 3;
-		else if($weight == 3)
+		else if($weight == "M")
 			$price += 3.5;			
-		else if($weight == 4)
+		else if($weight == "H")
 			$price += 5;					
-		else if($weight == 5)
+		else if($weight == "HH")
 			$price += 10;			
-		else if($weight == 6)
+		else if($weight == "XH")
 			$price += 25;
 
 		$obj = new stdClass;
