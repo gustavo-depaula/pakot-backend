@@ -38,7 +38,6 @@ $app->post('/package/price',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$price = calculatePrice($request);
 
-	updatePrice($request['id'],$price->price);
 	return json_encode($price);
 });
 
