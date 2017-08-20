@@ -7,6 +7,7 @@
 		$packagesIds = explode(";", $deliveryMan->packages);
 
 		$packages = [];
+		var_dump($deliveryMan);
 		for($i=1;$i<count($packagesIds);$i++){
 			$p = getPackageById($packagesIds[$i]);
 			if($p->arrived){

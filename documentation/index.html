@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentação-Pakot</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bulma.css">
+  <link rel="stylesheet" type="text/css" href="css/aside.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <nav class="nav is-dark has-shadow" id="top">
+    <div class="container">
+      <div class="nav-left">
+        PAKOT ICON + PAKOT LOGO
+      </div>
+      <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <div class="nav-right nav-menu is-hidden-tablet">
+        <a class="nav-item is-tab is-active" href="index.html">
+          Home
+        </a>
+        <a class="nav-item is-tab" href="pacote.html">
+          Pacotes
+        </a>
+        <a class="nav-item is-tab" href="login.html">
+          Login
+        </a>
+        <a class="nav-item is-tab" href="usuario.html">
+          Usuário
+        </a>
+        <a class="nav-item is-tab" href="entregador.html">
+          Entregador
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="columns">
+    <aside class="column is-2 aside hero is-fullheight is-hidden-mobile">
+      <div>
+        <div class="main">
+          <a href="index.html" class="item active"><span class="name">Home</span></a>
+          <a href="pacote.html" class="item"><span class="name">Pacotes</span></a>
+          <a href="login.html" class="item"><span class="name">Login</span></a>
+          <a href="usuario.html" class="item"><span class="name">Usuario</span></a>
+          <a href="entregador.html" class="item"><span class="name">Entregador</span></a>
+        </div>
+      </div>
+    </aside>
+    <div class="content column is-10 title-hero">
+      <section class="hero is-dark is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title is-2">
+              Documentação Pakot
+            </h1>
+          </div>
+        </div>
+      </section>
+      <div>
+        <div class="content">
+          <h1>Desenvolvimento</h1>
+          <p>O lado backend do serviço pakot foi desenvolvido em PHP, com o uso da framework <a href="https://www.slimframework.com/">SlimPHP</a>.</p>
+          <p>Com o uso de tal framwork, o funcionamento da aplicação se baseia no roteamento de requisições feitas pelo frontend.</p>
+          <p>A documentação da parte do backend é feita de seguinte forma:</p>
+
+          <div>
+            <table class="table">
+              <thead>
+                <tr>
+                <th>Tipo de requisição</th>
+                <th>Rota enviada</th>
+                <th>Função</th>
+                <th>Parâmetros enviados</th>
+                <th>Retorno</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>POST</td>
+                  <td>'/package/create'</td>
+                  <td>Função de criar pacotes no banco de dados, e de linkar o cliente com o id do pacote.</td>
+                  <td>email, nickname, description, priority, size, weight, origin, destination</td>
+                  <td>JSON(pacote criado + preço)</td>
+                </tr>
+              </tbody>
+            </table>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+  </footer>
+  <script async type="text/javascript" src="js/bulma.js"></script>
+</body>
+</html>
