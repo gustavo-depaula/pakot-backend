@@ -119,10 +119,7 @@ $app->post('/DeliveryMan/getData',function ($request, $response, $args){
 $app->post('/DeliveryMan/getAll',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$email = $request['email'];
-	$assigned = getAssignedPackages($email);
-	$done = getDonePackages($email);
-	$data = array_merge($assigned, $done);
-
+	$data = getAllDeliveryManPackages($email);
 	return json_encode($data);
 });
 
