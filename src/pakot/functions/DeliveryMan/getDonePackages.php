@@ -7,13 +7,15 @@
 		$packagesIds = explode(";", $deliveryMan->packages);
 
 		$packages = [];
-		for($i=1;$i<count($packagesIds);$i++){
+		for($i=0;$i<count($packagesIds);$i++){
 			$p = getPackageById($packagesIds[$i]);
-			if($p->arrived){
-				array_push($packages, getPackageById($packagesIds[$i]));
-				$packages[$i-1]['flag'] = false;
-				$packages[$i-1]['price'] = intval($packages[$i-1]['price']);
- 				$packages[$i-1]['deliveryCut'] = $packages[$i-1]['price'] * DELIVERYMANPERCENTAGE;				
+			if($p!="packageNotFound"){
+				if($p['arrived']){
+					array_push($packages, getPackageById($packagesIds[$i]));
+					$packages[count($packages)-1]['flag'] = false;
+					$packages[count($packages)-1]['price'] = intval($packages[count($packages)-1]['price']);
+	 				$packages[count($packages)-1]['deliveryCut'] = $packages[count($packages)-1]['price'] * DELIVERYMANPERCENTAGE;				
+				}
 			}
 		}
 		return array_reverse($packages);

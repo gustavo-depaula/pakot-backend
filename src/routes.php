@@ -151,6 +151,14 @@ $app->post('/DeliveryMan/assignPackage',function ($request, $response, $args){
 	return json_encode(assignPackage($email,$packageId));
 });
 
+$app->post('/DeliveryMan/getGainData',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+
+	return json_encode(getGains($email));
+});
+
+
 /* 	DEVELOPING ROUTES 
 	DELETE IN PUBLISHED APP
 */

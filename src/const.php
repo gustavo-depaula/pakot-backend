@@ -20,6 +20,7 @@
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getAssignedPackages.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getDonePackages.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getAllDeliveryManPackages.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getGainData.php';
 
 	define("DB_HOST", "us-cdbr-iron-east-03.cleardb.net:3306");
 	define("DB_USER", "bd3294cb43e05c");
