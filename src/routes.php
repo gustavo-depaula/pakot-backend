@@ -72,6 +72,30 @@ $app->get('/',function ($request, $response, $args){
 	return 'I am working!';
 });
 
+$app->get('/email',function ($request, $response, $args){
+	require 'phpmail/PHPMailerAutoload.php';
+
+	$mail = new PHPMailer;
+	$mail->isSMTP();
+	$mail->SMTPDebug = 2;
+	$mail->Debugoutput = 'html';
+	$mail->Host = "smtp.mailgun.org";
+	$mail->Port = 25;
+	$mail->SMTPAuth = true;
+	$mail->Username = "no_reply@usepakot.com";
+	$mail->Password = "noreply";
+	$mail->setFrom('no_reply@usepakot.com', 'Pakot');
+	$mail->addAddress('raulfmansur@hotmail.com', 'Usuário Pakot');
+	$mail->Subject = 'teste';
+	$mail->body = 'Email content';
+
+	if (!$mail->send())
+		echo "Mailer Error: " . $mail->ErrorInfo;
+	else
+		echo "Message sent!";
+		return 'yo';
+});
+
 $app->post('/login/DeliveryMan',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$email = $request['email'];
@@ -89,6 +113,16 @@ $app->post('/DeliveryMan/getData',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$email = $request['email'];
 	$data = getDeliveryManData($email);
+	return json_encode($data);
+});
+
+$app->post('/DeliveryMan/getAll',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$assigned = getAssignedPackages($email);
+	$done = getDonePackages($email);
+	$data = array_merge($assigned, $done);
+
 	return json_encode($data);
 });
 
