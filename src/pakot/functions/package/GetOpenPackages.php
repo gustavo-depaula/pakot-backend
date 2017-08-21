@@ -7,8 +7,11 @@
 	
 		$openPackages = [];			 
 	    while($row = $result->fetch_assoc()) {
-			if($row['assigned'] == "false")	
+			if($row['assigned'] == "false")	{
+				$row['price'] = intval($row['price']);
 				array_push($openPackages,$row);
+
+			}
 	    }
 		$conn->close();	
 		return $openPackages;
