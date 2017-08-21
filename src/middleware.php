@@ -15,5 +15,13 @@ $app->add(function ($request, $response, $next) {
 
 $app->add(function ($request, $response, $next) {
 	$response = $next($request, $response);
+
+	$tempRequest = $request ;
+	/*var_dump($app->container['body']);
+	
+	$allPostPutVars = $request->getParsedBody();
+	foreach($allPostPutVars as $key => $param){
+	   //POST or PUT parameters list
+	}*/
 	return $response;
 });
