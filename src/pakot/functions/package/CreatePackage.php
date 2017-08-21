@@ -69,7 +69,7 @@
 			$price += 25;
 
 		$obj = new stdClass;
-		$obj->price = $price;
+		$obj->price = intval($price);
 		return $obj;
 	}
 ?>
