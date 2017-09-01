@@ -26,7 +26,7 @@ function getGains($email){
 		$obj->priceWithCut = $packages[$i]['price'] * DELIVERYMANPERCENTAGE;	
 		array_push($array,$obj);
 		
-		$total += $packages[$i]['price'] * DELIVERYMANPERCENTAGE;;
+		$total += $packages[$i]['price'] * DELIVERYMANPERCENTAGE;
 	}
 
 	$obj = new stdClass();
