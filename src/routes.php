@@ -218,6 +218,7 @@ $app->post('/DeliveryMan/done',function ($request, $response, $args){
 	$obj['id'] = $id;
 	$obj['status'] = 'arrived';
 	$obj['value'] = 'true';
+	updatePackageStatus($obj);
 
 	$package = getPackageById($id);
 	$price = $package['price'];
