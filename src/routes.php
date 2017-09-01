@@ -158,6 +158,30 @@ $app->post('/DeliveryMan/getGainData',function ($request, $response, $args){
 	return json_encode(getGains($email));
 });
 
+$app->post('/User/emails',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	return json_encode(getEmails());
+});
+
+$app->post('/DeliveryMan/emails',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	return json_encode(getEmailsDeliveryMan());
+});
+
+$app->post('/User/updateWallet',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$value = $request['value'];
+	return json_encode(updateUserWallet($email,$value));
+});
+
+$app->post('/DeliveryMan/updateWallet',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$value = $request['value'];
+	return json_encode(updateDeliveryManWallet($email,$value));
+});
+
 
 /* 	DEVELOPING ROUTES 
 	DELETE IN PUBLISHED APP
@@ -175,6 +199,7 @@ $app->get('/cleanAll',function ($request, $response, $args){
 		`packages` text NOT NULL,
 		`payment` text NOT NULL,
 		`cpf` varchar(255) NOT NULL,
+		`wallet` float(10,2),
 		`id` bigint(20) NOT NULL AUTO_INCREMENT,
 		PRIMARY KEY (`id`),
 		UNIQUE KEY `email` (`email`),
@@ -219,6 +244,7 @@ $app->get('/cleanAll',function ($request, $response, $args){
 		`phone` text NOT NULL,
 		`packages` text NOT NULL,
 		`cpf` varchar(255) NOT NULL,
+		`wallet` float(10,2),
 		`id` bigint(20) NOT NULL AUTO_INCREMENT,
 		PRIMARY KEY (`id`),
 		UNIQUE KEY `email` (`email`),

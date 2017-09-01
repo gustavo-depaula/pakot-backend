@@ -14,13 +14,17 @@
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/getUser.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/getUserData.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/updateUserData.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/getEmails.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/User/updateUserWallet.php';
 
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getDeliveryManData.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/AssignPackage.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getAssignedPackages.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getDonePackages.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getAllDeliveryManPackages.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getEmailsDeliveryMan.php';
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/getGainData.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/DeliveryMan/updateDeliveryManWallet.php';
 
 	define("DB_HOST", "us-cdbr-iron-east-03.cleardb.net:3306");
 	define("DB_USER", "bd3294cb43e05c");

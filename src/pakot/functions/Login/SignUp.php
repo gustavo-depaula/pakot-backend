@@ -16,7 +16,7 @@
 		if($result->num_rows>0)
 			return 'cpfAlreadySigned';
 
-		$sql = "INSERT INTO commonuser (name,email,cpf,rating,phone,payment,packages) VALUES ('$name','$email','$cpf','undefined','$phone','$payment','')";
+		$sql = "INSERT INTO commonuser (name,email,cpf,rating,phone,wallet,payment,packages) VALUES ('$name','$email','$cpf','undefined','$phone',0,'$payment','')";
 		if ($conn->query($sql) === TRUE)
 			return 'SignUpSuccess';
 		else 
@@ -40,7 +40,7 @@
 		if($result->num_rows>0)
 			return 'cpfAlreadySigned';
 
-		$sql = "INSERT INTO deliveryman (name,email,cpf,rating,phone,packages) VALUES ('$name','$email','$cpf','undefined','$phone','')";
+		$sql = "INSERT INTO deliveryman (name,email,cpf,rating,wallet,phone,packages) VALUES ('$name','$email','$cpf','undefined',0,'$phone','')";
 		if ($conn->query($sql) === TRUE)
 			return 'SignUpSuccess';
 		else 
