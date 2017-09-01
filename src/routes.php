@@ -41,7 +41,7 @@ $app->post('/package/price',function ($request, $response, $args){
 
 	$wallet = getUserWallet($email);
 
-	if($price < $wallet){
+	if($price > $wallet){
 		$obj = new stdClass();
 		$obj->price = 'insufficient';
 		return json_encode($obj);
