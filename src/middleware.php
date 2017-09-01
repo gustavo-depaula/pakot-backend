@@ -14,8 +14,13 @@ $app->add(function ($request, $response, $next) {
 });
 
 $app->add(function ($request, $response, $next) {
-	$response = $next($request, $response);
-
+	if ($request->isPost()) {
+		$parsed_request = $request->getParsedBody();
+		if (array_key_exists('unhackable', $parsed_request))
+		    $response = $next($request, $response);
+	} else {
+	    $response = $next($request, $response);
+	}
 
 	return $response;
 });

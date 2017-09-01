@@ -194,6 +194,30 @@ $app->post('/DeliveryMan/getWallet',function ($request, $response, $args){
 	return json_encode(getDeliveryManWallet($email));
 });
 
+$app->post('/DeliveryMan/done',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	$id = $request['id'];
+
+	//change status
+	$obj = [];
+	$obj['id'] = $id;
+	$obj['status'] = 'arrived';
+	$obj['value'] = 'true';
+	echo (updatePackageStatus($obj));
+
+	$price = getPackageById($id)['price'];
+	$priceWithCut = $price * DELIVERYMANPERCENTAGE;
+
+	echo $price;
+	//do paymants for client and for deliveryMan
+/*	updateUserWallet($email,$value);
+	updateDeliveryManWallet($email,$value);
+
+	//store the pakot share in our account
+*/
+});
+
 
 /* 	DEVELOPING ROUTES 
 	DELETE IN PUBLISHED APP
