@@ -16,7 +16,8 @@ function fillUser(){
 		}
 	};
 	xhttp.open("POST",PATH + "User/emails", true);
-	xhttp.send();
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.send(JSON.stringify({unhackable:'true'}));
 }
 
 function fillDeliveryMan(){
@@ -35,7 +36,8 @@ function fillDeliveryMan(){
 		}
 	};
 	xhttp.open("POST",PATH + "DeliveryMan/emails", true);
-	xhttp.send();
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.send(JSON.stringify({unhackable:'true'}));
 }
 
 function walletUser(){
@@ -50,7 +52,7 @@ function walletUser(){
 	};
 	xhttp.open("POST",PATH + "User/updateWallet", true);
 	xhttp.setRequestHeader("Content-Type", "application/json");
-	xhttp.send(JSON.stringify({email:email,value:value}));
+	xhttp.send(JSON.stringify({email:email,value:value, unhackable:'true'}));
 }
 
 function walletDeliveryMan(){
@@ -64,6 +66,6 @@ function walletDeliveryMan(){
 		}
 	};
 	xhttp.open("POST",PATH + "DeliveryMan/updateWallet", true);
-	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("email=" + email + "&value=" + value);
+	xhttp.setRequestHeader("Content-Type", "application/json");
+	xhttp.send(JSON.stringify({email:email,value:value, unhackable:'true'}));
 }
