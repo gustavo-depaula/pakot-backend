@@ -241,9 +241,9 @@ $app->get('/pakotGains',function ($request, $response, $args){
 
 $app->get('/cleanAll',function ($request, $response, $args){
 	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-	$sql = "DROP TABLE commonuser";
-	$conn->query($sql);
-	$sql = "CREATE TABLE `commonuser` (
+	$sql = "
+	DROP TABLE commonuser;
+	CREATE TABLE `commonuser` (
 		`name` text NOT NULL,
 		`email` varchar(255) NOT NULL,
 		`rating` text NOT NULL,
@@ -256,12 +256,10 @@ $app->get('/cleanAll',function ($request, $response, $args){
 		PRIMARY KEY (`id`),
 		UNIQUE KEY `email` (`email`),
 		UNIQUE KEY `cpf` (`cpf`)
-		);";
-	$conn->query($sql);
-
-	$sql = "DROP TABLE packages";
-	$conn->query($sql);
-	$sql = "CREATE TABLE `packages` (
+	);
+		
+	DROP TABLE packages;
+	CREATE TABLE `packages` (
 		`id` bigint(20) NOT NULL AUTO_INCREMENT,
 		`nickname` text NOT NULL,
 		`description` text NOT NULL,
@@ -285,11 +283,10 @@ $app->get('/cleanAll',function ($request, $response, $args){
 		`datearrived` text NOT NULL,
 		`datecanceled` text NOT NULL,
 		PRIMARY KEY (`id`)
-		);";
-	$conn->query($sql);
-	$sql = "DROP TABLE deliveryman";
-	$conn->query($sql);
-	$sql = "CREATE TABLE `deliveryman` (
+	);
+
+	DROP TABLE deliveryman;
+	CREATE TABLE `deliveryman` (
 		`name` text NOT NULL,
 		`email` varchar(255) NOT NULL,
 		`rating` text NOT NULL,
@@ -301,18 +298,18 @@ $app->get('/cleanAll',function ($request, $response, $args){
 		PRIMARY KEY (`id`),
 		UNIQUE KEY `email` (`email`),
 		UNIQUE KEY `cpf` (`cpf`)
-		);";
-	$conn->query($sql);
-	$sql = "DROP TABLE pakotgain";
-	$conn->query($sql);
-	$sql = "
-		CREATE TABLE `pakotgain` (
-			id int(1) auto_increment,
-	        `wallet` float(20,2),
-			PRIMARY KEY (`id`)
-		);
-	    INSERT INTO pakotgain(wallet) values (0);
-		";
+	);
+
+	DROP TABLE pakotgain;
+	CREATE TABLE `pakotgain` (
+		id int(1) auto_increment,
+		`wallet` float(20,2), 
+		PRIMARY KEY (`id`)
+	);
+	
+	INSERT INTO pakotgain(wallet) values (0)
+	";
+	
 	$conn->query($sql);
 	$conn->close();
 	return "All tables cleaned";
