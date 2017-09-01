@@ -204,18 +204,23 @@ $app->post('/DeliveryMan/done',function ($request, $response, $args){
 	$obj['id'] = $id;
 	$obj['status'] = 'arrived';
 	$obj['value'] = 'true';
-	echo (updatePackageStatus($obj));
 
-	$price = getPackageById($id)['price'];
+	$package = getPackageById($id);
+	$price = $package['price'];
+	$sender = $package['sender'];
 	$priceWithCut = $price * DELIVERYMANPERCENTAGE;
 
-	echo $price;
 	//do paymants for client and for deliveryMan
-/*	updateUserWallet($email,$value);
-	updateDeliveryManWallet($email,$value);
+	updateUserWallet($sender,($price*-1));
+	updateDeliveryManWallet($email,$priceWithCut);
 
 	//store the pakot share in our account
-*/
+	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+	$pakotgain = $price - $priceWithCut;
+	$sql = "UPDATE pakotgain SET wallet=$pakotgain WHERE id=2";
+	$conn->query($sql);
+	$conn->close();
+	return 'Done';
 });
 
 
@@ -286,6 +291,17 @@ $app->get('/cleanAll',function ($request, $response, $args){
 		UNIQUE KEY `email` (`email`),
 		UNIQUE KEY `cpf` (`cpf`)
 		);";
+	$conn->query($sql);
+	$sql = "DROP TABLE pakotgain";
+	$conn->query($sql);
+	$sql = "
+		CREATE TABLE `pakotgain` (
+			id int(1) auto_increment,
+	        `wallet` float(20,2),
+			PRIMARY KEY (`id`)
+		);
+	    INSERT INTO pakotgain(wallet) values (0);
+		";
 	$conn->query($sql);
 	$conn->close();
 	return "All tables cleaned";
