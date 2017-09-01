@@ -12,7 +12,7 @@ $app->add(function ($request, $response, $next) {
             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 });
-
+/*
 $app->add(function ($request, $response, $next) {
 	if ($request->isPost()) {
 		$parsed_request = $request->getParsedBody();
@@ -23,4 +23,4 @@ $app->add(function ($request, $response, $next) {
 	}
 
 	return $response;
-});
+});*/
