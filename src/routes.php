@@ -36,9 +36,19 @@ $app->post('/package/update',function ($request, $response, $args) {
 $app->post('/package/price',function ($request, $response, $args){
 	// assign the price to package id and returns the price 
 	$request = $request->getParsedBody();
+	$email = $request['email'];
 	$price = calculatePrice($request);
 
-	return json_encode($price);
+	$wallet = getUserWallet($email);
+
+	if($price < $wallet){
+		$obj = new stdClass();
+		$obj->price = 'insufficient';
+		return json_encode($obj);
+	}
+	else
+		return json_encode($price);
+
 });
 
 $app->post('/login/User',function ($request, $response, $args){
