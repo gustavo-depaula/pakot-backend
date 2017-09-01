@@ -223,6 +223,17 @@ $app->post('/DeliveryMan/done',function ($request, $response, $args){
 	return 'Done';
 });
 
+$app->get('/pakotGains',function ($request, $response, $args){
+	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+	
+	$sql = "SELECT wallet FROM pakotgain";
+	$result = $conn->query($sql);
+	while($row = $result->fetch_assoc()){
+		$conn->close();
+		return $row['wallet'];
+	}
+});
+
 
 /* 	DEVELOPING ROUTES 
 	DELETE IN PUBLISHED APP
