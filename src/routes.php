@@ -185,13 +185,13 @@ $app->post('/DeliveryMan/updateWallet',function ($request, $response, $args){
 $app->post('/User/getWallet',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$email = $request['email'];
-	return json_encode(updateUserWallet($email,$value));
+	return json_encode(getUserWallet($email));
 });
 
 $app->post('/DeliveryMan/getWallet',function ($request, $response, $args){
 	$request = $request->getParsedBody();
 	$email = $request['email'];
-	return json_encode(updateUserWallet($email,$value));
+	return json_encode(getDeliveryManWallet($email));
 });
 
 
