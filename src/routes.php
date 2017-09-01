@@ -182,6 +182,18 @@ $app->post('/DeliveryMan/updateWallet',function ($request, $response, $args){
 	return json_encode(updateDeliveryManWallet($email,$value));
 });
 
+$app->post('/User/getWallet',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	return json_encode(updateUserWallet($email,$value));
+});
+
+$app->post('/DeliveryMan/getWallet',function ($request, $response, $args){
+	$request = $request->getParsedBody();
+	$email = $request['email'];
+	return json_encode(updateUserWallet($email,$value));
+});
+
 
 /* 	DEVELOPING ROUTES 
 	DELETE IN PUBLISHED APP

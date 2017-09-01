@@ -37,7 +37,11 @@ function getGains($email){
 
 	$gains->valuePerId = $array;
 	$gains->qtPerStatus= $obj;
-	$gains->averagePerPackage = $total/count($packages);
+
+	if(count($packages) == 0)
+		$gains->averagePerPackage = 0;
+	else
+		$gains->averagePerPackage = $total/count($packages);
 	$gains->totalWon = $total;
 
 	return $gains;
