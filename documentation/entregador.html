@@ -104,6 +104,41 @@
                   <td>email, id</td>
                   <td>string com confirmação de ação.</td>
                 </tr>
+                <tr>
+                  <td>POST</td>
+                  <td>'/DeliveryMan/getGainData'</td>
+                  <td>Retorna todos os ganhos de um entregador.</td>
+                  <td>email</td>
+                  <td>JSON(objeto com todos os dados de ganhos).</td>
+                </tr>
+                <tr>
+                  <td>POST</td>
+                  <td>'/DeliveryMan/emails'</td>
+                  <td>Retorna uma array com todos os emails cadastrados como entregadores.</td>
+                  <td></td>
+                  <td>JSON(array com emails).</td>
+                </tr>   
+                <tr>
+                  <td>POST</td>
+                  <td>'/DeliveryMan/updateWallet'</td>
+                  <td>Atualiza o valor da carteira de um usuário.</td>
+                  <td>email, value</td>
+                  <td>string com confirmação de ação.</td>
+                </tr>                
+                <tr>
+                  <td>POST</td>
+                  <td>'/DeliveryMan/getWallet'</td>
+                  <td>Retorna o valor da carteira de um usuário.</td>
+                  <td>email</td>
+                  <td>JSON(valor).</td>
+                </tr>  
+                <tr>
+                  <td>POST</td>
+                  <td>'/DeliveryMan/done'</td>
+                  <td>Finaliza uma entrega, e faz as transações de dinheiro.</td>
+                  <td>email, id</td>
+                  <td>string com confirmação de ação.</td>
+                </tr>  
               </tbody>
             </table>            
           </div>

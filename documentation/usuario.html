@@ -90,6 +90,27 @@
                   <td>email, nome, cpf, phone, payment</td>
                   <td>JSON(usuário)/string 'noDataFound'</td>
                 </tr>
+                <tr>
+                  <td>POST</td>
+                  <td>'/User/emails'</td>
+                  <td>Retorna uma array com todos os emails cadastrados como usuários.</td>
+                  <td></td>
+                  <td>JSON(array com emails).</td>
+                </tr>   
+                <tr>
+                  <td>POST</td>
+                  <td>'/User/updateWallet'</td>
+                  <td>Atualiza o valor da carteira de um usuário.</td>
+                  <td>email, value</td>
+                  <td>string com confirmação de ação.</td>
+                </tr>          
+                <tr>
+                  <td>POST</td>
+                  <td>'/User/getWallet'</td>
+                  <td>Retorna o valor da carteira de um usuário.</td>
+                  <td>email</td>
+                  <td>JSON(valor).</td>
+                </tr>  
               </tbody>
             </table>            
           </div>
