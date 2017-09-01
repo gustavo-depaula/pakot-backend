@@ -37,7 +37,7 @@ $app->post('/package/price',function ($request, $response, $args){
 	// assign the price to package id and returns the price 
 	$request = $request->getParsedBody();
 	$email = $request['email'];
-	$price = calculatePrice($request);
+	$price = calculatePrice($request)->price;
 
 	$wallet = getUserWallet($email)->wallet;
 

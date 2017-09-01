@@ -36,7 +36,7 @@
 	function calculatePrice($request){
 		$price = 0;
 		$priority = $request['priority'];		
-		$distance = $request['distance'];
+		$distance = $request['distance'] / 1000;
 		$size = $request['size'];
 		$weight = $request['weight'];
 
