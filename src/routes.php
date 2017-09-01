@@ -44,13 +44,17 @@ $app->post('/package/price',function ($request, $response, $args){
 	echo 'wallet: ' . $wallet;
 	echo 'price: ' . $price;
 
+	$obj = new stdClass();
+	$obj->p = $price;
+	$obj->w = $wallet;
 	if($price > $wallet){
-		$obj = new stdClass();
 		$obj->price = 'insufficient';
 		return json_encode($obj);
 	}
-	else
-		return json_encode($price);
+	else{
+		$obj->price = $price;
+		return json_encode($obj);
+	}
 
 });
 
