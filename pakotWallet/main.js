@@ -1,4 +1,4 @@
-var PATH = 'http://localhost/public/';
+var PATH = 'https://pakot-backend.herokuapp.com/public/';
 
 function fillUser(){
 	var xhttp = new XMLHttpRequest();
