@@ -39,7 +39,7 @@ $app->post('/package/price',function ($request, $response, $args){
 	$email = $request['email'];
 	$price = calculatePrice($request);
 
-	$wallet = getUserWallet($email);
+	$wallet = getUserWallet($email)->wallet;
 
 	if($price > $wallet){
 		$obj = new stdClass();
