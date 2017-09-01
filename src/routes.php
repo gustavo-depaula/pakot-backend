@@ -41,9 +41,6 @@ $app->post('/package/price',function ($request, $response, $args){
 
 	$wallet = getUserWallet($email)->wallet;
 
-	echo 'wallet: ' . $wallet;
-	echo 'price: ' . $price;
-
 	$obj = new stdClass();
 	$obj->p = $price;
 	$obj->w = $wallet;
