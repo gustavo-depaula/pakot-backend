@@ -2,7 +2,7 @@
 function getUserWallet($email){
 	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
-	$sql = "SELECT wallet FROM commonuser";
+	$sql = "SELECT wallet FROM commonuser WHERE email='$email'";
 	$result = $conn->query($sql);
 
 	while($row = $result->fetch_assoc()) {
@@ -18,7 +18,7 @@ function getUserWallet($email){
 function getDeliveryManWallet($email){
 	$conn = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
-	$sql = "SELECT wallet FROM deliveryman";
+	$sql = "SELECT wallet FROM deliveryman WHERE email='$email'";
 	$result = $conn->query($sql);
 
 	while($row = $result->fetch_assoc()) {
