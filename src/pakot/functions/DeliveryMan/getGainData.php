@@ -23,7 +23,7 @@ function getGains($email){
 
 		$obj = new stdClass();
 		$obj->id = $packages[$i]['id'];
-		$obj->priceWithCut = $packages[$i]['price'] * DELIVERYMANPERCENTAGE;	
+		$obj->priceWithCut = intval($packages[$i]['price'] * DELIVERYMANPERCENTAGE);	
 		array_push($array,$obj);
 		
 		$total += $packages[$i]['price'] * DELIVERYMANPERCENTAGE;
@@ -41,8 +41,8 @@ function getGains($email){
 	if(count($packages) == 0)
 		$gains->averagePerPackage = 0;
 	else
-		$gains->averagePerPackage = $total/count($packages);
-	$gains->totalWon = $total;
+		$gains->averagePerPackage = intval($total/count($packages));
+	$gains->totalWon = intval($total);
 
 	return $gains;
 }

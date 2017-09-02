@@ -28,10 +28,15 @@
 
 	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/wallet/getWallet.php';
 
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/pakot/functions/mail/email.php';
+
+	require $_SERVER['DOCUMENT_ROOT'] . '/src/phpmail/PHPMailerAutoload.php';
+
 	define("DB_HOST", "us-cdbr-iron-east-03.cleardb.net:3306");
 	define("DB_USER", "bd3294cb43e05c");
 	define("DB_PASSWORD", "07b0f1c3");
 	define("DB_NAME", "heroku_cacf46323b37948");
 
 	define("DELIVERYMANPERCENTAGE",0.7);
+	define("HTMLEMAILPATH",$_SERVER['DOCUMENT_ROOT'] . '/src/email.html');
 ?>
