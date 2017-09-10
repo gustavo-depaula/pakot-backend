@@ -26,7 +26,7 @@
 		$packages = [];
 		for($i=1;$i<count($packagesIds);$i++){
 			array_push($packages, getPackageById($packagesIds[$i]));
-			$packages[$i-1]['price'] = intval($packages[$i-1]['price'] * DELIVERYMANPERCENTAGE);
+			$packages[$i-1]['price'] = intval($packages[$i-1]['price']);
 			$packages[$i-1]['flag']=false;
 		}
 		return array_reverse($packages);
