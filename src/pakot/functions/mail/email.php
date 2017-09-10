@@ -10,6 +10,7 @@ function sendEmail($email){
 	$mail->Port= 465;
 	$mail->From = 'no_reply@usepakot.com';
 	$mail->FromName = 'Servico Pakot';
+	$mail->CharSet = 'UTF-8';
 	$mail->addAddress($email,"Novo Usuario");
 	$mail->isHTML(true);
 
